@@ -1,0 +1,94 @@
+/* General Styles */
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5; /* Light grey background for better contrast */
+}
+
+.container {
+   width:50%;
+   height: 50%;
+    margin: auto;
+    padding: 40px; /* Increased padding for better spacing */
+}
+
+h1, h3 {
+    font-weight: bold;
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+/* Card Styles */
+.card {
+    border: none; /* Remove default card border */
+    border-radius: 15px; /* Round corners of the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.card:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+/* Form Field Styles */
+.form-group {
+    margin-bottom: 1.5rem; /* Consistent spacing between form fields */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 10px; /* Rounded corners for input fields */
+    transition: border-color 0.3s; /* Smooth transition for focus effect */
+}
+
+input:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light blue glow effect */
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 25px; 
+    padding: 12px 20px; 
+    font-weight: bold; 
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+.btn-danger {
+    background-color: #dc3545; 
+    color: white;
+    border: none; 
+}
+
+.btn-danger:hover {
+    background-color: #c82333; 
+    transform: translateY(-2px); 
+}
+
+
+.text-center a {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.text-center a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px; /* Reduced padding on smaller screens */
+    }
+    .card {
+        width: 100%; /* Full width on small devices */
+    }
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+    <style>
+        body {
+            background-color: #f0f2f5; 
+        }
+        
+        .container {
+            height: 100%; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            border-radius: 15px; 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+        }
+
+        .card-body {
+            padding: 30px; 
+        }
+
+        h3, p {
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Signup Form -->
+    <div class="container">
+        <div class="card w-75">
+            <div class="card-body">
+                <h3 class="card-title text-center mb-4">Sign Up</h3>
+                <p class="text-center mb-4">Create an Account, It's free</p>
+
+                <form action="./signup.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="signUpEmail">Email</label>
+                        <input type="email" class="form-control" name="signUpEmail" id="signUpEmail" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                    </div>
+
+                    <!-- Mobile Field -->
+                    <div class="form-group">
+                        <label for="signUpMobile">Mobile</label>
+                        <input type="text" class="form-control" name="signUpMobile" id="signUpMobile" placeholder="Mobile (10 digits)" required pattern="\d{10}">
+                    </div>
+
+                    <!-- Full Name Fields -->
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <div class="d-flex">
+                            <input type="text" class="form-control mr-2" name="firstName" placeholder="First Name" required>
+                            <input type="text" class="form-control mr-2" name="middleName" placeholder="Middle Name" required>
+                            <input type="text" class="form-control mr-2" name="lastName" placeholder="Last Name" required>
+                            <input type="text" class="form-control" name="familyName" placeholder="Family Name" required>
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="signUpPassword">Password</label>
+                        <input type="password" class="form-control" name="signUpPassword" id="signUpPassword" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}">
+                        <small class="form-text text-muted">Password must be at least 8 characters long, include uppercase, lowercase, a number, and a special character.</small>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
+
+                    <!-- Date of Birth Field -->
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <div class="d-flex">
+                            <input type="number" class="form-control mr-2" name="day" placeholder="DD" min="1" max="31" required>
+                            <input type="number" class="form-control mr-2" name="month" placeholder="MM" min="1" max="12" required>
+                            <input type="number" class="form-control" name="year" placeholder="YYYY" min="1900" max="2024" required>
+                        </div>
+                    </div>
+
+                    <!-- Profile Image Upload -->
+                    <div class="form-group">
+                        <label for="profileImage">Profile Image (JPEG, PNG)</label>
+                        <input type="file" class="form-control" name="profileImage" id="profileImage" accept=".jpg, .jpeg, .png" required>
+                    </div>
+
+                    <!-- CV Upload -->
+                    <div class="form-group">
+                        <label for="cvFile">Upload CV (PDF, DOC, DOCX)</label>
+                        <input type="file" class="form-control" name="cvFile" id="cvFile" accept=".pdf, .doc, .docx" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100 mt-3">Sign Up</button>
+                </form>
+
+                <p class="text-center mt-3">Already have an account? <a href="login.php">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            const password = document.getElementById('signUpPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const year = document.getElementsByName('year')[0].value;
+            const currentYear = new Date().getFullYear();
+            
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            // Check if user is at least 16 years old
+            if (currentYear - year < 16) {
+                alert("You must be at least 16 years old to sign up.");
+                return false;
+            }
+
+            return true; 
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
